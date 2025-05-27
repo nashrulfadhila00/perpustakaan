@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detail Buku</title>
+</head>
+<body>
+    <h1>Detail Buku</h1>
+
+    <p><strong>Judul:</strong> {{ buku[1] }}</p>
+    <p><strong>Penulis:</strong> {{ buku[2] }}</p>
+    <p><strong>Tahun:</strong> {{ buku[3] }}</p>
+
+    <a href="{{ url_for('main.index') }}">Kembali ke Daftar</a>
+</body>
+</html>

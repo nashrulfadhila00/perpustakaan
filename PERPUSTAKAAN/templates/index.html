@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perpustakaan Digital</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Perpustakaan Digital</h1>
+        <nav>
+            <a href="{{ url_for('main.index') }}">Beranda</a> |
+            <a href="{{ url_for('main.tambah') }}">Tambah Buku</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Daftar Buku</h2>
+            {% if buku %}
+                <table>
+                    <thead>
+                        <tr><th>No</th><th>Judul</th><th>Penulis</th><th>Tahun</th><th>Aksi</th></tr>
+                    </thead>
+                    <tbody>
+                        {% for b in buku %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ b[1] }}</td>
+                            <td>{{ b[2] }}</td>
+                            <td>{{ b[3] }}</td>
+                            <td>
+                                <a href="{{ url_for('main.show', id=b[0]) }}">Lihat</a> |
+                                <a href="{{ url_for('main.edit', id=b[0]) }}">Edit</a> |
+                                <a href="{{ url_for('main.hapus', id=b[0]) }}" onclick="return confirm('Yakin ingin hapus?')">Hapus</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Tidak ada buku dalam database.</p>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer><p>&copy; 2025 Perpustakaan Digital Polbel</p></footer>
+</body>
+</html>

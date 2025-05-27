@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Tambah Buku</title>
+</head>
+<body>
+    <h2>Tambah Buku Baru</h2>
+    <form method="post" onsubmit="return validasiForm();">
+        <label for="judul">Judul:</label><br>
+        <input type="text" id="judul" name="judul"><br>
+        <label for="penulis">Penulis:</label><br>
+        <input type="text" id="penulis" name="penulis"><br>
+        <label for="tahun">Tahun:</label><br>
+        <input type="number" id="tahun" name="tahun"><br>
+        <input type="submit" value="Tambah">
+    </form>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

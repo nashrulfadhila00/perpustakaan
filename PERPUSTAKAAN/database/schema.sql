@@ -1,0 +1,10 @@
+
+CREATE DATABASE IF NOT EXISTS perpustakaan;
+USE perpustakaan;
+
+CREATE TABLE IF NOT EXISTS buku (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    judul VARCHAR(255) NOT NULL,
+    penulis VARCHAR(255) NOT NULL,
+    tahun INT NOT NULL
+);

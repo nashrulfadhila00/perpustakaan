@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perpustakaan Digital</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+    <header class="mb-4">
+        <h1 class="mb-3">Perpustakaan Digital</h1>
+        <nav>
+            <a href="{{ url_for('main.index') }}" class="btn btn-secondary">Beranda</a>
+            <a href="{{ url_for('main.tambah') }}" class="btn btn-primary">Tambah Buku</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2 class="mb-3">Daftar Buku</h2>
+            {% if buku %}
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>No</th>
+                            <th>Judul</th>
+                            <th>Penulis</th>
+                            <th>Tahun</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for b in buku %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ b[1] }}</td>
+                            <td>{{ b[2] }}</td>
+                            <td>{{ b[3] }}</td>
+                            <td>
+                                <a href="{{ url_for('main.show', id=b[0]) }}" class="btn btn-sm btn-info">Lihat</a>
+                                <a href="{{ url_for('main.edit', id=b[0]) }}" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="{{ url_for('main.hapus', id=b[0]) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus buku ini?')">Hapus</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Tidak ada data buku.</p>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>
+

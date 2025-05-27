@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daftar Penulis</title>
+</head>
+<body>
+    <h1>Daftar Penulis</h1>
+    <a href="/penulis/tambah">Tambah Penulis</a><br><br>
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>ID</th>
+            <th>Nama</th>
+            <th>Negara</th>
+            <th>Aksi</th>
+        </tr>
+        {% for p in penulis %}
+        <tr>
+            <td>{{ p[0] }}</td>
+            <td>{{ p[1] }}</td>
+            <td>{{ p[2] }}</td>
+            <td>
+                <a href="/penulis/hapus/{{ p[0] }}" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
